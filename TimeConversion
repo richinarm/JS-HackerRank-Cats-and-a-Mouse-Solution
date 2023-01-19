@@ -1,0 +1,34 @@
+function timeConversion(s) {
+
+  let firstTwoLetters = s.slice(0, 2);
+  let lastTwoletters = s.slice(-2);
+  let middlebody = s.substring(2, 8);
+  let output = "";
+
+
+  if (lastTwoletters=="PM" && firstTwoLetters!="12") {
+    firstTwoLetters = (parseInt(firstTwoLetters) +12).toString();
+    lastTwoletters = "";
+  }
+
+  if (lastTwoletters=="PM" && firstTwoLetters==="12") {
+    lastTwoletters = "";
+  }
+
+  if(lastTwoletters=="AM" && firstTwoLetters!="12"){
+    lastTwoletters=""
+  }
+
+  if(lastTwoletters=="AM" && firstTwoLetters==="12"){
+    firstTwoLetters = "00";
+    lastTwoletters = "";
+  }
+
+
+  output= firstTwoLetters + middlebody + lastTwoletters;
+  return output;
+
+}
+
+
+console.log(timeConversion("07:05:45PM"));
