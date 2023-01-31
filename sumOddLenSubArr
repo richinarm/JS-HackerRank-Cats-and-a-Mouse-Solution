@@ -1,0 +1,28 @@
+//Sum of all odd length subarrays (leetCode):
+
+/**Given an array of positive integers arr, return the sum of all possible odd-length subarrays of arr.
+
+A subarray is a contiguous subsequence of the array.**/
+
+
+function sumOddLengthSubarrays(arr) {
+  let oddSum = 0;
+  let singlesCounter = 0
+  let counter = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    singlesCounter += arr[i];
+    
+    for (let j = arr.length - 1; j > 0; j--) {
+
+      counter = arr.slice(i, j + 1)
+      if (counter.length % 2 === 1 && counter.length != 1) {
+        oddSum += counter.reduce((arr, val) => arr + val, 0)
+      }
+    }
+  }
+
+  return oddSum + singlesCounter;
+}
+
+sumOddLengthSubarrays([1,2])
